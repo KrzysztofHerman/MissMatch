@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "array_rows": 4,
+    "array_cols": 4,
+    "has_dummies": true,
+    "pitch_x": 12.52,
+    "pitch_y": 13.84,
+    "timestamp": "2025-08-02T04:14:19.947302"
+  },
+  "pattern_data": {
+    "3,0": {
+      "offset_y": -0.02,
+      "h_length": 0,
+      "v_length": 5.2,
+      "goes_up": true
+    },
+    "2,0": {
+      "offset_y": -0.01,
+      "h_length": 3.0,
+      "v_length": 19.05,
+      "goes_up": true
+    }
+  }
+}

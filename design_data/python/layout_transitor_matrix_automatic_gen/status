@@ -1,0 +1,10 @@
+02/08/2025
+
+status: los transisotres dibujados y ruteados en la gui coinciden con el resultado generado por klayout. El largo total de Y ha sido corregido
+
+todo: Los transitores PMOS no estan centrados en el guardring como si lo estan los nmos, debemos corregir esto
+
+todo: para acelerar el proceso de ruteo manual en la GUI podemos copiar/clonar (en tiempo) real los patrones dibujados en los transisotres de la misma fila, asumiendo que lo dibujado en el transistor de la columna 0 se clonara a los transistores de las otras columnas en base a la fila de la columna cero que se este modificando; es decir por ejemplo, todos los transisotres de la fila 0 tendran clonado el patron del transisor 0,0 pero desplazado en X lo que corresponda segun la ubicacion de la columna correspondiente (0,1 | 0,2 | 0,3| etc)
+lo mismo para los transistores de la fila 1, tendran clonado el patron del transisor 1,0 pero desplazado en X lo que corresponda segun la ubicacion de la columna correspondiente (1,1 | 1,2 | 1,3| etc)
+
+TODO: COMO ESCALAR PARA NUEVAS DIMENSIONES? LA GUI DEBE TOMAR EN COSNIDERACION ESTAS NUEVAS DIMENSIONES PERO TAMBIEN EL SCRIPT MISMATCH_ARRAY_4X4_MODIFIED.PY DEBE CONSIDERAR UN CORRECTO ESPACIOAMIENTO ENTRE TRANSISTORES Y MANETENER LOS TRANSISTORES DENTRO DE GUARDRING DONDE LOS BORDES SON COMPARTIDOS Y LOS TRANSITORES ESTAN EN MEDIO del guardring CON UNA DISTANCIA DE 4u de todos sus bordes (distancia tambien debe ser configurable emdiante una variable)

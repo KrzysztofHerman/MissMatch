@@ -1,9 +1,32 @@
+meta:
+  version: 2
+  flow: Classic
+  substituting_steps:
+    # Don't resize the buffers
+    OpenROAD.Resizer*: null
+    OpenROAD.RepairDesign*: null
+
 DESIGN_NAME: decoder
 VERILOG_FILES: dir::src/*.sv
 
+# Disable timing driven placement
+# as it would resize the buffers
+PL_TIME_DRIVEN: false
+
+# Reduce wasted space
+TOP_MARGIN_MULT: 1
+BOTTOM_MARGIN_MULT: 1
+LEFT_MARGIN_MULT: 6
+RIGHT_MARGIN_MULT: 6
+
+FP_IO_VTHICKNESS_MULT: 1
+FP_IO_HTHICKNESS_MULT: 1
+
+GRT_ALLOW_CONGESTION: True
+
 "pdk::ihp-sg13g2":
-    PL_TARGET_DENSITY_PCT: 45
+    PL_TARGET_DENSITY_PCT: 64
     FP_SIZING: absolute
-    DIE_AREA: [0, 0, 500, 75]
+    DIE_AREA: [0, 0, 250, 40]
 
 FP_PIN_ORDER_CFG: dir::pins.cfg
