@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "array_rows": 3,
+    "array_cols": 3,
+    "dummy_mode": "full",
+    "device_type": "pmos",
+    "transistor_W": 3.0,
+    "transistor_L": 2,
+    "guardring_spacing": 4.0
+  },
+  "pattern_data": {}
+}

@@ -1,0 +1,244 @@
+# =====================================================================
+# IHP SG13G2 - Process definition file for GDS3D (routing stack only)
+# Based on official SG13G2 layer mapping (metals/vias) and GDS3D format.
+# Units of Height/Thickness are typically nm (as per GDS3D README).
+# =====================================================================
+
+# ---- Mandatory substrate (must be first; Layer number = 255) -------
+LayerStart: Substrate
+Layer: 255
+Datatype: 0
+Height: 0
+Thickness: 1000
+Red: 0.5
+Green: 0.4
+Blue: 0.3
+Filter: 0.5
+Metal: 0
+Shortkey: 0
+Show: 1
+LayerEnd
+
+# -------------------- Metal 1 / Via 1 --------------------------------
+LayerStart: Metal 1
+Layer: 8
+Datatype: 0
+Height: 600
+Thickness: 400
+Red: 0.00
+Green: 0.00
+Blue: 1.00
+Filter: 0.0
+Metal: 1
+Shortkey: 1
+Show: 1
+LayerEnd
+
+LayerStart: Via 1
+Layer: 19
+Datatype: 0
+Height: 1000
+Thickness: 300
+Red: 0.60
+Green: 0.60
+Blue: 0.60
+Filter: 0.0
+Metal: 0
+Shortkey: 2
+Show: 1
+LayerEnd
+
+# -------------------- Metal 2 / Via 2 --------------------------------
+LayerStart: Metal 2
+Layer: 10
+Datatype: 0
+Height: 1400
+Thickness: 400
+Red: 0.00
+Green: 0.70
+Blue: 0.90
+Filter: 0.0
+Metal: 1
+Shortkey: 3
+Show: 1
+LayerEnd
+
+LayerStart: Via 2
+Layer: 29
+Datatype: 0
+Height: 1800
+Thickness: 300
+Red: 0.60
+Green: 0.60
+Blue: 0.60
+Filter: 0.0
+Metal: 0
+Shortkey: 4
+Show: 1
+LayerEnd
+
+# -------------------- Metal 3 / Via 3 --------------------------------
+LayerStart: Metal 3
+Layer: 30
+Datatype: 0
+Height: 2200
+Thickness: 400
+Red: 0.00
+Green: 0.80
+Blue: 0.50
+Filter: 0.0
+Metal: 1
+Shortkey: 5
+Show: 1
+LayerEnd
+
+LayerStart: Via 3
+Layer: 49
+Datatype: 0
+Height: 2600
+Thickness: 300
+Red: 0.60
+Green: 0.60
+Blue: 0.60
+Filter: 0.0
+Metal: 0
+Shortkey: 6
+Show: 1
+LayerEnd
+
+# -------------------- Metal 4 / Via 4 --------------------------------
+LayerStart: Metal 4
+Layer: 50
+Datatype: 0
+Height: 3000
+Thickness: 400
+Red: 0.90
+Green: 0.60
+Blue: 0.20
+Filter: 0.0
+Metal: 1
+Shortkey: 7
+Show: 1
+LayerEnd
+
+LayerStart: Via 4
+Layer: 66
+Datatype: 0
+Height: 3400
+Thickness: 300
+Red: 0.60
+Green: 0.60
+Blue: 0.60
+Filter: 0.0
+Metal: 0
+Shortkey: 8
+Show: 1
+LayerEnd
+
+# ------------------------ Metal 5 ------------------------------------
+LayerStart: Metal 5
+Layer: 67
+Datatype: 0
+Height: 3800
+Thickness: 400
+Red: 0.80
+Green: 0.20
+Blue: 0.60
+Filter: 0.0
+Metal: 1
+Shortkey: 9
+Show: 1
+LayerEnd
+
+# ----------------------- TopMetal1 / TopVia1 -------------------------
+LayerStart: Top Via 1
+Layer: 125
+Datatype: 0
+Height: 4200
+Thickness: 400
+Red: 0.55
+Green: 0.55
+Blue: 0.55
+Filter: 0.0
+Metal: 0
+Shortkey: 0
+Show: 1
+LayerEnd
+
+LayerStart: Top Metal 1 (TM1)
+Layer: 126
+Datatype: 0
+Height: 4600
+Thickness: 2000
+Red: 0.70
+Green: 0.70
+Blue: 0.70
+Filter: 0.0
+Metal: 1
+Shortkey: 0
+Show: 1
+LayerEnd
+
+# ----------------------- TopMetal2 / TopVia2 -------------------------
+LayerStart: Top Via 2
+Layer: 133
+Datatype: 0
+Height: 6800
+Thickness: 500
+Red: 0.50
+Green: 0.50
+Blue: 0.50
+Filter: 0.0
+Metal: 0
+Shortkey: 0
+Show: 1
+LayerEnd
+
+LayerStart: Top Metal 2 (TM2)
+Layer: 134
+Datatype: 0
+Height: 7300
+Thickness: 3000
+Red: 0.40
+Green: 0.40
+Blue: 0.40
+Filter: 0.0
+Metal: 1
+Shortkey: 0
+Show: 1
+LayerEnd
+
+# ------------------------ (Opcional) FEOL -----------------------------
+# Cuando quieras añadir FEOL, usa bloques como estos con los números
+# de tu layer_table.csv:
+# LayerStart: Active
+# Layer: <num>        # p.ej. 1
+# Datatype: <dt>      # p.ej. 0
+# Height: 100
+# Thickness: 200
+# Red: 0.60  Green: 0.60  Blue: 0.60
+# Metal: 0
+# Show: 1
+# LayerEnd
+#
+# LayerStart: Poly
+# Layer: <num>        # (p.ej. 46)
+# Datatype: <dt>      # (p.ej. 0 o 20 según tu CSV)
+# Height: 300
+# Thickness: 200
+# Red: 0.80  Green: 0.20  Blue: 0.20
+# Metal: 0
+# Show: 1
+# LayerEnd
+#
+# LayerStart: Contact
+# Layer: <num>        # (CONTACT a Active/Poly)
+# Datatype: <dt>
+# Height: 500
+# Thickness: 300
+# Red: 0.50  Green: 0.50  Blue: 0.50
+# Metal: 0
+# Show: 1
+# LayerEnd
+# =====================================================================
+

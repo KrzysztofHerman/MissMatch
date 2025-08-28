@@ -1,0 +1,10 @@
+** sch_path: /home/designer/shared/verification/simulations/ihp-sg13g2/MissMatch/design_data/xschem/Drain_Line.sch
+.subckt Drain_Line ctrl_n ctrl_p Dsense Dforce 1.2V Drain Vss
+*.PININFO Vss:B ctrl_n:I 1.2V:B Dsense:B Drain:B Dforce:B ctrl_p:I
+M4 Dsense ctrl_p Drain net2 sg13_lv_nmos w=10u l=0.13u ng=1 m=1
+M8 Drain ctrl_n Dsense net1 sg13_lv_pmos w=10u l=0.13u ng=1 m=1
+M9 Drain ctrl_n Dforce net1 sg13_lv_pmos w=10u l=0.13u ng=1 m=1
+M10 Dforce ctrl_p Drain net2 sg13_lv_nmos w=10u l=0.13u ng=1 m=1
+R1 VSS net2 ptap1 R=30.62 w=0.66u l=10u
+R2 1.2V net1 ntap1 R=12.73 w=0.66u l=10u
+.ends

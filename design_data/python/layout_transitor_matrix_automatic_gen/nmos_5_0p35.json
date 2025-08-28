@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "array_rows": 5,
+    "array_cols": 5,
+    "dummy_mode": "full",
+    "device_type": "nmos",
+    "transistor_W": 5.0,
+    "transistor_L": 0.35,
+    "guardring_spacing": 2.0,
+    "pitch_x": 9.5,
+    "pitch_y": 5.9,
+    "timestamp": "2025-08-19T03:12:11.703704",
+    "coordinate_system": "active_no_flip",
+    "version": "3.0_fixed"
+  },
+  "pattern_data": {
+    "column_pattern": {
+      "transistors": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "segments": [
+        {
+          "x1": 0.0,
+          "y1": 0.0,
+          "x2": -1.0,
+          "y2": 0.0,
+          "type": "horizontal"
+        },
+        {
+          "x1": -1.0,
+          "y1": 0.0,
+          "x2": -1.0,
+          "y2": 5.8999999999999995,
+          "type": "vertical"
+        },
+        {
+          "x1": 0.0,
+          "y1": 5.8999999999999995,
+          "x2": -1.0,
+          "y2": 5.8999999999999995,
+          "type": "horizontal"
+        },
+        {
+          "x1": -1.0,
+          "y1": 5.8999999999999995,
+          "x2": -1.0,
+          "y2": 11.8,
+          "type": "vertical"
+        },
+        {
+          "x1": 0.0,
+          "y1": 11.8,
+          "x2": -1.0,
+          "y2": 11.8,
+          "type": "horizontal"
+        },
+        {
+          "x1": -1.0,
+          "y1": 11.8,
+          "x2": -1.0,
+          "y2": 17.7,
+          "type": "vertical"
+        },
+        {
+          "x1": 0.0,
+          "y1": 17.7,
+          "x2": -1.0,
+          "y2": 17.7,
+          "type": "horizontal"
+        },
+        {
+          "x1": -1.0,
+          "y1": 17.7,
+          "x2": -1.0,
+          "y2": 23.599999999999998,
+          "type": "vertical"
+        },
+        {
+          "x1": 0.0,
+          "y1": 23.599999999999998,
+          "x2": -1.0,
+          "y2": 23.599999999999998,
+          "type": "horizontal"
+        },
+        {
+          "x1": -1.0,
+          "y1": 23.599999999999998,
+          "x2": -1.0,
+          "y2": 26.6,
+          "type": "vertical"
+        }
+      ]
+    }
+  }
+}
