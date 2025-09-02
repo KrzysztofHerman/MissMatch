@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "transistor_W": 0.5,
+    "transistor_L": 0.5,
+    "guardring_spacing": 4.0,
+    "array_rows": 4,
+    "device_type": "nmos",
+    "dummy_mode": "full"
+  },
+  "pattern_data": {}
+}
