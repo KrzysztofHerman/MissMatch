@@ -1,0 +1,60 @@
+meta:
+  version: 2
+  flow: Classic
+  substituting_steps:
+    # Don't resize the buffers
+    OpenROAD.Resizer*: null
+    OpenROAD.RepairDesign*: null
+ 
+      #Magic.WriteLEF: null # Not needed, save time
+    Odb.CheckDesignAntennaProperties: null # Requires LEF
+    
+    # Add Seal Ring
+    
+    # Run Filler insertion
+    
+    # Save time
+    KLayout.DRC: null
+    Magic.DRC: null
+    #KLayout.XOR: null
+
+    Odb.ReportDisconnectedPins: null # TODO IOs
+
+    # Add steps for LVS with KLayout
+    #+Checker.LVS: OpenROAD.WriteCDL
+    #+OpenROAD.WriteCDL: KLayout.LVS
+    
+    # LVS does not work yet automatically
+    Magic.SpiceExtraction: null
+    Checker.IllegalOverlap: null
+    Netgen.LVS: null
+    
+    # Just ingore for now
+    Checker.SetupViolations: null
+    Checker.HoldViolations: null
+
+DESIGN_NAME: hdecoder
+VERILOG_FILES: dir::src/*.sv
+
+# Disable timing driven placement
+# as it would resize the buffers
+PL_TIME_DRIVEN: false
+
+# Reduce wasted space
+TOP_MARGIN_MULT: 1
+BOTTOM_MARGIN_MULT: 1
+LEFT_MARGIN_MULT: 6
+RIGHT_MARGIN_MULT: 6
+
+MAGIC_EXT_USE_GDS: true
+FP_IO_VTHICKNESS_MULT: 1
+FP_IO_HTHICKNESS_MULT: 1
+  #FP_IO_HLAYER: Metal2
+  #FP_IO_VLAYER: Metal2
+GRT_ALLOW_CONGESTION: True
+
+"pdk::ihp-sg13g2":
+    PL_TARGET_DENSITY_PCT: 64
+    FP_SIZING: absolute
+    DIE_AREA: [0, 0, 620, 40]
+FP_PIN_ORDER_CFG: dir::pins.cfg

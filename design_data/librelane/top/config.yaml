@@ -1,0 +1,236 @@
+meta:
+  version: 2
+  flow: Classic
+  substituting_steps:
+    # IO pads are used instead of pins
+    OpenROAD.IOPlacement: null
+    +OpenROAD.Floorplan: OpenROAD.Padring
+    
+    Magic.WriteLEF: null # Not needed, save time
+    Odb.CheckDesignAntennaProperties: null # Requires LEF
+    
+    # Add Seal Ring
+    #+Checker.XOR: KLayout.SealRing
+    
+    # Run Filler insertion
+    #+KLayout.SealRing: KLayout.FillerGeneration
+    
+    # Save time
+    KLayout.DRC: null
+    Magic.DRC: null
+    KLayout.XOR: null
+
+    Odb.ReportDisconnectedPins: null # TODO IOs
+
+    # Add steps for LVS with KLayout
+    #+Checker.LVS: OpenROAD.WriteCDL
+    #+OpenROAD.WriteCDL: KLayout.LVS
+    
+    # LVS does not work yet automatically
+    Magic.SpiceExtraction: null
+    Checker.IllegalOverlap: null
+    Netgen.LVS: null
+    
+    # Just ingore for now
+    Checker.SetupViolations: null
+    Checker.HoldViolations: null
+VERILOG_DEFINES:
+- FUNCTIONAL
+
+DESIGN_NAME: top
+VERILOG_FILES:
+- dir::src/heichips25_template_top.v
+  # dir::src/decoder.sv
+
+# TODO magic places the I/O pads at wrong positions
+#PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+#MAGIC_EXT_USE_GDS: true
+
+# Use minimal DRC rules
+#KLAYOUT_DRC_RUNSET: pdk_dir::/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc
+
+KLAYOUT_DRC_OPTIONS:
+  densityRules: true
+
+EXTRA_GDS:
+- dir::bondpad/bondpad_70x70.gds
+
+EXTRA_LEFS:
+- dir::bondpad/bondpad_70x70.lef
+
+
+
+PAD_IO_WEST: [
+    
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[0\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[1\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[2\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[3\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[4\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[5\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[6\\].ui"],
+
+]
+
+PAD_IO_SOUTH: [
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[7\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[8\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[9\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[10\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[11\\].ui"],
+    
+    [sg13g2_IOPadVdd,           sg13g2_IOPadVdd_south],
+    [sg13g2_IOPadVss,           sg13g2_IOPadVss_south],
+]
+
+PAD_IO_EAST: [
+    
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[12\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[13\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[14\\].ui"],
+    [sg13g2_IOPadIn,            "sg13g2_IOPadIn_ui\\[15\\].ui"],
+    
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_DrainS],
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_DrainF],
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_Bulk],
+    
+]
+
+PAD_IO_NORTH: [
+
+    [sg13g2_IOPadIOVdd,         sg13g2_IOPadIOVdd_north],
+    [sg13g2_IOPadIOVss,         sg13g2_IOPadIOVss_north],
+
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_SourceS],
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_SourceF],
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_Gate],
+    [sg13g2_IOPadAnalog,           sg13g2_IOPadAnalog_Vcl],
+    
+]
+
+#PNR_SDC_FILE: dir::constraint.sdc
+#SIGNOFF_SDC_FILE: dir::constraint.sdc
+#FALLBACK_SDC: dir::constraint.sdc
+
+VDD_NETS:
+- VDD
+GND_NETS:
+- VSS
+
+GRT_ALLOW_CONGESTION: true
+
+IGNORE_DISCONNECTED_MODULES:
+- sg13g2_IOPadIn
+- sg13g2_IOPadVdd
+- sg13g2_IOPadVss
+- sg13g2_IOPadIOVss
+- sg13g2_IOPadIOVdd
+- sg13g2_IOPadAnalog
+  #- Drain_Line
+- matrix
+
+  #CLOCK_PORT: clock
+  #CLOCK_PERIOD: 100
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 2000, 2000]
+CORE_AREA: [380, 380, 1620, 1620]
+PL_TARGET_DENSITY_PCT: 50
+  #ROUTING_OBSTRUCTIONS:
+  #- [TopMetal2, 400.24, 450.92, 440.24, 1000.92]
+  #- [TopMetal1, 400.24, 450.92, 440.24, 1000.92]
+  #- [Metal1, 400.24, 450.92, 440.24, 1000.92]
+  #- [Metal2, 400.24, 450.92, 440.24, 1000.92]
+  #- [Metal3, 400.24, 450.92, 440.24, 1000.92]
+  #- [Metal4, 400.24, 450.92, 440.24, 1000.92]
+  #- [Metal5, 400.24, 450.92, 440.24, 1000.92]
+
+  #PDN_OBSTRUCTIONS:
+  #- [TopMetal2, 450, 450.92, 1376.48, 630]
+  #- [TopMetal1, 450, 450.92, 1376.48, 630]
+  #- [Metal1, 450, 450.92, 1376.48, 630]
+  #- [Metal2, 450, 450.92, 1376.48, 630]
+  #- [Metal3, 450, 450.92, 1376.48, 630]
+  #- [Metal4, 450, 450.92, 1376.48, 630]
+  #- [Metal5, 450, 450.92, 1376.48, 630]
+
+FP_PDN_CFG: dir::pdn.tcl
+
+# Disable, to prevent some issues
+PL_RESIZER_TIMING_OPTIMIZATIONS: false
+
+MACROS:
+  matrix:
+    gds:
+      - "dir::../dut/gds/matrix10.gds"
+    lef:
+      - "dir::../dut/gds/matrix10.lef"
+    instances: 
+      mat1:
+        location: [550.0, 450.92]
+        orientation: N
+      mat2:
+        location: [776.44, 450.92]
+        orientation: N
+      mat3:
+        location: [1002.88, 450.92]
+        orientation: N
+      mat4:
+        location: [1229.32, 450.92]
+        orientation: N
+          #mat5:
+          #location: [1465.76, 450.92]
+          #orientation: N
+  
+  vdecoder:
+    gds:
+      - "dir::../vertical-decoder/final/gds/vdecoder.gds"
+    lef:
+      - "dir::../vertical-decoder/final/lef/vdecoder.lef"
+    nl:
+      - "dir::../vertical-decoder/final/nl/vdecoder.nl.v"
+    spef:
+      "nom_*":
+      - "dir::../vertical-decoder/final/spef/nom/vdecoder.nom.spef"
+    instances: 
+      vdec:
+        location: [400.24, 400.92]
+        orientation: N
+  
+  hdecoder:
+    gds:
+      - dir::hdecoder/hdecoder.gds
+    lef:
+      - dir::hdecoder/hdecoder.lef
+    nl:
+      - dir::hdecoder/hdecoder.nl.v
+    spef:
+      "nom_*":
+      - dir::hdecoder/hdecoder.nom.spef
+    instances: 
+      hdec:
+        location: [500.24, 1100.92]
+        orientation: N
+  
+  Drain_Line:
+    gds:
+      - dir::tgates/drain_line.gds
+    lef:
+      - dir::tgates/drain_line.lef
+    instances: 
+      dl1:
+        #location: [511.19, 1075.35]
+        location: [511.19, 875.35]
+        orientation: N
+      dl2:
+        #location: [515.51, 1075.32]
+        location: [515.51, 875.32]
+        orientation: N
+
+          #PDN_MACRO_CONNECTIONS:
+    
+PDN_MACRO_CONNECTIONS:
+- "vdec VDD VSS VPWR VGND"
+- "hdec VDD VSS VPWR VGND"
+- "dl1   VDD VSS 1.2V VSS"
+- "dl2   VDD VSS 1.2V VSS"
+  #- "mat1  VDD VSS"
