@@ -1,0 +1,14 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 14/09/2025 00:27
+
+.SUBCKT Drain_Line ctrl_p ctrl_n 1.2v Vss Dforce Drain Dsense Net1 Net2 Vss   
+M$1 Drain ctrl_p Dforce Net2 sg13_lv_nmos L=0.13u W=10u AS=3.4p AD=3.4p PS=20.68u
++ PD=20.68u
+M$2 Drain ctrl_p Dsense Net2 sg13_lv_nmos L=0.13u W=10u AS=3.4p AD=3.4p PS=20.68u
++ PD=20.68u
+M$3 Drain ctrl_n Dforce Net1 sg13_lv_pmos L=0.13u W=10u AS=3.4p AD=3.4p PS=20.68u
++ PD=20.68u
+M$4 Drain ctrl_n Dsense Net1 sg13_lv_pmos L=0.13u W=10u AS=3.4p AD=3.4p PS=20.68u
++ PD=20.68u
+R$5 Net1 1.2v ntap1 A=6.6p P=21.32u
+R$6 Net2 Vss ptap1 A=6.6p P=21.32u
+.ENDS Drain_Line

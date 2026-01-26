@@ -1,0 +1,59 @@
+v {xschem version=3.4.6 file_version=1.2}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+T {@symname} -60 -6 0 0 0.3 0.3 {}
+T {@name} 125 -112 0 0 0.2 0.2 {}
+
+# Caja
+P 4 5 130 -100 -130 -100 -130 100 130 100 130 -100 {}
+
+# --- IZQUIERDA: ctrl buses ---
+B 5 -152.5 7.5 -147.5 12.5 {name=ctrl_n[0:79] dir=inout}
+L 7 -150 10 -130 10 {}
+T {ctrl_n[0:79]} -125 6 0 0 0.2 0.2 {}
+
+B 5 -152.5 -12.5 -147.5 -7.5 {name=ctrl_p[0:79] dir=inout}
+L 7 -150 -10 -130 -10 {}
+T {ctrl_p[0:79]} -125 -14 0 0 0.2 0.2 {}
+
+# --- DERECHA: Gate/Source buses ---
+B 5 147.5 7.5 152.5 12.5 {name=Gate[0:79] dir=inout}
+L 7 130 10 150 10 {}
+T {Gate[0:79]} 125 6 0 1 0.2 0.2 {}
+
+B 5 147.5 -12.5 152.5 -7.5 {name=Source[0:79] dir=inout}
+L 7 130 -10 150 -10 {}
+T {Source[0:79]} 125 -14 0 1 0.2 0.2 {}
+
+# --- ARRIBA: comunes (top pins) ---
+# Vcl
+B 5 -102.5 107.5 -97.5 112.5 {name=Vcl dir=inout}
+L 7 -100 100 -100 110 {}
+T {Vcl} -104 95 1 1 0.2 0.2 {}
+
+# Gdrive
+B 5 -62.5 107.5 -57.5 112.5 {name=Gdrive dir=inout}
+L 7 -60 100 -60 110 {}
+T {Gdrive} -64 95 1 1 0.2 0.2 {}
+
+# Ssense
+B 5 -22.5 107.5 -17.5 112.5 {name=Ssense dir=inout}
+L 7 -20 100 -20 110 {}
+T {Ssense} -24 95 1 1 0.2 0.2 {}
+
+# Sforce
+B 5 17.5 107.5 22.5 112.5 {name=Sforce dir=inout}
+L 7 20 100 20 110 {}
+T {Sforce} 16 95 1 1 0.2 0.2 {}
+
+# 1.2V
+B 5 57.5 107.5 62.5 112.5 {name=1.2V dir=inout}
+L 7 60 100 60 110 {}
+T {1.2V} 56 95 1 1 0.2 0.2 {}
+
+# Vss
+B 5 97.5 107.5 102.5 112.5 {name=Vss dir=inout}
+L 7 100 100 100 110 {}
+T {Vss} 96 95 1 1 0.2 0.2 {}

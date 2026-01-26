@@ -1,0 +1,30 @@
+v {xschem version=3.4.6 file_version=1.2}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+T {@symname} -40 -10 0 0 0.3 0.3 {}
+T {@name}   -20 130 0 0 0.2 0.2 {}
+
+/* Cuadrado del bloque */
+P 4 5 150 -150  -150 -150  -150 150  150 150  150 -150 {}
+
+/* ---- PIN D (arriba derecha) ---- */
+B 5 20 -230 40 -210 {name=D dir=inout}
+L 7 30 -150 30 -210 {}
+T {D} 20 -240 0 0 0.25 0.25 {}
+
+/* ---- PIN B (arriba izquierda) ---- */
+B 5 -40 -230 -20 -210 {name=B dir=inout}
+L 7 -30 -150 -30 -210 {}
+T {B} -50 -240 0 0 0.25 0.25 {}
+
+/* ---- PIN G (izquierda, arriba) ---- */
+B 5 -230 -40 -210 -20 {name=G dir=inout}
+L 7 -150 -30 -210 -30 {}
+T {G} -250 -34 0 0 0.25 0.25 {}
+
+/* ---- PIN S (izquierda, abajo) ---- */
+B 5 -230 20 -210 40 {name=S dir=inout}
+L 7 -150 30 -210 30 {}
+T {S} -250 26 0 0 0.25 0.25 {}

@@ -1,0 +1,33 @@
+v {xschem version=3.4.6 file_version=1.2}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -150 -10 -130 -10 {}
+L 4 -150 10 -130 10 {}
+L 7 -80 -50 -80 -40 {}
+L 7 -40 -50 -40 -40 {}
+L 7 0 -50 0 -40 {}
+L 7 90 0 110 0 {}
+L 7 40 -50 40 -40 {}
+B 5 -152.5 -12.5 -147.5 -7.5 {name=ctrl_n dir=in}
+B 5 -152.5 7.5 -147.5 12.5 {name=ctrl_p dir=in}
+B 5 -82.5 -52.5 -77.5 -47.5 {name=Dsense dir=inout}
+B 5 -42.5 -52.5 -37.5 -47.5 {name=Dforce dir=inout}
+B 5 -2.5 -52.5 2.5 -47.5 {name=1.2V dir=inout}
+B 5 107.5 -2.5 112.5 2.5 {name=Drain dir=inout}
+B 5 37.5 -52.5 42.5 -47.5 {name=Vss dir=inout}
+P 4 5 -130 -40 90 -40 90 40 -130 40 -130 -40 {}
+T {@symname} -63 4 0 0 0.3 0.3 {}
+T {@name} 95 -42 0 0 0.2 0.2 {}
+T {ctrl_n} -125 -14 0 0 0.2 0.2 {}
+T {ctrl_p} -125 6 0 0 0.2 0.2 {}
+T {Dsense} -80 -34 1 0 0.2 0.2 {}
+T {Dforce} -40 -34 1 0 0.2 0.2 {}
+T {Drain} 85 -4 0 1 0.2 0.2 {}
+T {Vss} 40 -19 1 1 0.2 0.2 {}
+T {1.2V} 0 -14 1 1 0.2 0.2 {}

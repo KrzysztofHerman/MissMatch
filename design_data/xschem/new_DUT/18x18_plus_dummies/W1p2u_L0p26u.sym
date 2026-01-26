@@ -1,0 +1,21 @@
+v {xschem version=3.4.6 file_version=1.2}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+T {@symname} 0 0 0 0 0.35 0.35 {}
+T {@name} 180 -180 0 0 0.2 0.2 {}
+P 4 5 160 -160 -160 -160 -160 160 160 160 160 -160 {}
+B 5 -60 -220 -40 -200 {name=B dir=inout}
+L 7 -50 -160 -50 -200 {}
+T {B} -60 -230 0 0 0.25 0.25 {}
+B 5 40 -220 60 -200 {name=D dir=inout}
+L 7 50 -160 50 -200 {}
+T {D} 40 -230 0 0 0.25 0.25 {}
+B 5 -220 -40 -200 -20 {name=G dir=inout}
+L 7 -160 -30 -200 -30 {}
+T {G} -240 -40 0 0 0.25 0.25 {}
+B 5 -220 20 -200 40 {name=S dir=inout}
+L 7 -160 30 -200 30 {}
+T {S} -240 20 0 0 0.25 0.25 {}
+.prop prop=schematic_name:W1p2u_L0p26u.sch
